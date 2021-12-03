@@ -31,6 +31,7 @@ skylineDropdown.addEventListener('change', () => {
     skylineCount++; 
 
     skylineImageEl.src = `./assets/${skyline}-skyline.jpg`;
+    displayStats(); 
 });
 
 castleDropdown.addEventListener('change', () => {
@@ -38,6 +39,7 @@ castleDropdown.addEventListener('change', () => {
     castleCount++; 
 
     castleImageEl.src = `./assets/${castle}-castle.jpg`;
+    displayStats();
 });
 
 waterfrontDropdown.addEventListener('change', () => {
@@ -45,9 +47,39 @@ waterfrontDropdown.addEventListener('change', () => {
     waterfrontCount++;
 
     waterfrontImageEl.src = `./assets/${waterfront}-waterfront.jpg`;
+    displayStats();
 });
   // get user input
+sloganButton.addEventListener('click', () => {
+    const newSlogan = sloganInputEl.value;
+    sloganInput.push(newSlogan);
+
+    sloganInputEl.value = '';
+    sloganListEl.textContent = '';
+    displaySlogans();
+});
+
+
 
 
   // use user input to update state 
+function displayStats() {
+    countEl.textContent = makeStatsString(skylineCount, castleCount, waterfrontCount);
+}
+
+
+
   // update DOM to reflect the new state
+
+function displaySlogans() {
+    sloganInput.value = '';
+
+    sloganListEl.textContent = '';
+
+    for (let slogan of sloganInput) {
+        const p = document.createElement('p');
+        p.classList.add('slogan');
+        sloganListEl.append(p);
+        p.textContent = slogan;
+    }
+}
