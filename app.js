@@ -54,7 +54,7 @@ sloganButton.addEventListener('click', () => {
     const newSlogan = sloganInputEl.value;
     sloganInput.push(newSlogan);
 
-    sloganInputEl.value = '';
+  
     sloganListEl.textContent = '';
     displaySlogans();
 });
